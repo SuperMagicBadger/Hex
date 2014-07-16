@@ -1,0 +1,28 @@
+{
+	com.badlogic.gdx.graphics.g2d.BitmapFont: { 
+		default_font: { file: fonts/small_font_20.fnt } 
+	},
+	com.badlogic.gdx.graphics.Color: {
+		portrait_font_color: {a: 1, b: 0, g: 0, r: 0},
+		ui_font_color:  {a: 1, b: 0, g: 0, r: 0},
+		ui_down_font_color:  {a: 1, b: 0.25, g: 0, r: 0}
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+		portrait_label: {font: default_font, fontColor: portrait_font_color},
+		ui_label: {font: default_font, fontColor: ui_font_color} 
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+		portrait_button: { checked: user_patch, up: frame_bg },
+		ui_button: {down: user_patch, up: frame_bg}
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
+		team_sel_scroller: { background: frame_bg },
+		ui_sel_scroller: { background: user_patch }
+	},
+	com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+		ui_text_button: { 
+			down: user_patch, up: frame_bg, font: default_font,
+			downFontColor: ui_down_font_color, fontColor: ui_font_color
+		}
+	}
+}

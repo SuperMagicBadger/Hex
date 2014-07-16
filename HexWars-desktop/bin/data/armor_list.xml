@@ -1,0 +1,105 @@
+<root>
+    
+    <!--
+    	Core Stats
+    	HP - the hitpoints of the armor.  dies at 0.
+    	Movement - the number of movement points.  tile move costs vary
+    	Armor - flat damage reduction
+    	Profile - the armor's size.  determines the hit threshold and hide checks 
+    	Escape - the liklihood that a pilot will escape a downed armor.  roll a d12 against escape score, so higher scores are bad.
+    	
+    	Modifiers
+    	Control - The ease of control.  Modifies skill and precision checks.
+    	Reaction - The general movement speed of the unit. Modifies speed checks.
+    	Seonsors - Determines the sight range.  Modifies perception checks.
+    	 
+     -->
+    
+    <!--
+    	The standard eins is the first level generic
+    	armor.  It's meant to be general purpose, with
+    	a wide range of equipable weaons. 
+     -->
+    <armor name="Standard Eins">
+        <!-- core stats -->
+        <hp>10</hp>
+        <movement>4</movement>
+        <armor>1</armor>
+        <profile>2</profile>
+        <escape>5</escape>
+        <!-- modifiers -->
+		<control>0.60</control>
+        <reaction>0.60</reaction>
+        <sensors>0.60</sensors>
+        <!--  slots -->
+        <weapon_slot>r_hand</weapon_slot>
+        <weapon_slot>l_hand</weapon_slot>
+        <weapon_slot>r_shoulder</weapon_slot>
+        <weapon_slot>l_shoulder</weapon_slot>
+        <!-- image info -->
+		<image>
+		    <animation_set>green_circle</animation_set>
+		    <initial>idle</initial>
+		</image>
+    </armor>
+
+    <!-- 
+    	The heavy eins is the first level of heavy armor.
+    	It has high hp and a larger damage reduction than
+    	the others, but its slower and harder to dodge with.
+     -->
+    
+    <armor name="Heavy Eins">
+        <!-- core stats -->
+        <hp>20</hp>
+        <movement>3</movement>
+        <armor>1</armor>
+        <profile>4</profile>
+        <escape>5</escape>
+        <!-- modifiers -->
+		<control>0.60</control>
+        <reaction>0.60</reaction>
+        <sensors>0.60</sensors>
+        <!--  slots -->
+        <weapon_slot>r_hand</weapon_slot>
+        <weapon_slot>l_hand</weapon_slot>
+        <weapon_slot>r_shoulder</weapon_slot>
+        <weapon_slot>l_shoulder</weapon_slot>
+        <!-- image info -->
+		<image>
+		    <animation_set>green_circle</animation_set>
+		    <initial>idle</initial>
+		</image>	
+	</armor>
+    
+    <!--
+    	The skirmisher eins is the first level of light armor.
+    	It has low hp and no armor, but has the best mobility, control,
+    	and reaction scores of the set.  It has a crap escape score
+    	due to the limited space on the frame.  This frame is good for
+    	snipers due to the high control/sensor score.  It is also good for
+    	scouts and skrimishers thanks to the high reaction/sensor scores.
+     -->
+    
+    <armor name="Skirmisher Eins">
+        <!-- core stats -->
+        <hp>8</hp>
+        <movement>5</movement>
+        <armor>0</armor>
+        <profile>1</profile>
+        <escape>8</escape>
+        <!-- modifiers -->
+		<control>0.90</control>
+        <reaction>1</reaction>
+        <sensors>0.90</sensors>
+        <!--  slots -->
+        <weapon_slot>r_hand</weapon_slot>
+        <weapon_slot>l_hand</weapon_slot>
+        <!-- image info -->
+		<image>
+		    <animation_set>green_circle</animation_set>
+		    <initial>idle</initial>
+		</image>	
+	</armor>
+    
+</root>

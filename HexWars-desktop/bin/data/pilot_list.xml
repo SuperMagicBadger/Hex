@@ -1,0 +1,76 @@
+<root>
+
+    <pilot>
+        <name>Bob McButtsbutts</name>
+        <nic>Butts</nic>
+        <portrait value="unit_portrait"/>
+        
+        <speed>20:1.0</speed>
+        <skill>20:1.0</skill>
+        <prec>20:0.7</prec>
+        <perc>20:0.6</perc>
+        
+    </pilot>
+    
+    <pilot>
+        <name>Dude Butts</name>
+        <nic>Name</nic>
+        <portrait value="unit_portrait"/>
+        
+        <speed>20:1.0</speed>
+        <skill>20:1.0</skill>
+        <prec>20:0.7</prec>
+        <perc>20:0.6</perc>
+        
+    </pilot>
+    
+    <pilot>
+        <name>Dude Butts</name>
+        <nic>hgd</nic>
+        <portrait value="unit_portrait"/>
+        
+        <speed>20:1.0</speed>
+        <skill>20:1.0</skill>
+        <prec>20:0.7</prec>
+        <perc>20:0.6</perc>
+        
+    </pilot>
+    
+    <pilot>
+        <name>Dude Butts</name>
+        <nic>poykk</nic>
+        <portrait value="unit_portrait"/>
+        
+        <speed>20:1.0</speed>
+        <skill>20:1.0</skill>
+        <prec>20:0.7</prec>
+        <perc>20:0.6</perc>
+        
+    </pilot>
+
+    <name_dict>
+        <name>butts</name>
+        <name>asdffdsa</name>
+        <name>That One Guy</name>
+        <name>Brandon</name>
+        <name>Tim</name>
+        <name>Nicky</name>
+        <name>Stephanie</name>
+        <name>Scoot</name>
+        <name>Tina</name>
+        <name>Tamy</name>
+        <name>Richane</name>
+        <name>Mark</name>
+        <name>Bill</name>
+        <name>Emery</name>
+        <name>Rando</name>
+        <name>Figgis</name>
+        <name>Fiddis</name>
+        <nic>Wind</nic>
+        <nic>Streak</nic>
+        <nic>Saint</nic>
+        <nic>Dude</nic>
+        <nic>Guy</nic>
+        <nic>more</nic>
+    </name_dict>
+</root>

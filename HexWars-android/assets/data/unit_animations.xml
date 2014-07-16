@@ -1,0 +1,19 @@
+<root>
+    <set name="green_circle">
+        <anim type="idle">
+            <atlas>data/hex_wars.pack</atlas>
+            <set>green_circle_idle</set>
+            <mode>ping_pong</mode>
+        </anim>
+        <anim type="selected">
+            <atlas>data/hex_wars.pack</atlas>
+            <set>green_circle_selected</set>
+            <mode>ping_pong</mode>
+        </anim>
+        <anim type="move">
+            <atlas>data/hex_wars.pack</atlas>
+            <set>green_circle_walk</set>
+            <mode>loop</mode>
+        </anim>
+    </set>
+</root>

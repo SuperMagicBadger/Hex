@@ -1,0 +1,72 @@
+
+ui.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+text_box
+  rotate: false
+  xy: 1, 4
+  size: 72, 75
+  split: 2, 2, 3, 3
+  orig: 72, 75
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 75, 4
+  size: 65, 75
+  orig: 65, 75
+  offset: 0, 0
+  index: -1
+window
+  rotate: false
+  xy: 142, 41
+  size: 35, 38
+  split: 2, 2, 28, 2
+  orig: 35, 38
+  offset: 0, 0
+  index: -1
+frame_bg
+  rotate: false
+  xy: 142, 6
+  size: 33, 33
+  split: 5, 5, 4, 4
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+user_patch
+  rotate: false
+  xy: 179, 46
+  size: 33, 33
+  split: 6, 6, 6, 6
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+end_turn_image
+  rotate: false
+  xy: 214, 60
+  size: 19, 19
+  orig: 19, 19
+  offset: 0, 0
+  index: -1
+loading_bar_bg
+  rotate: false
+  xy: 179, 12
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+loading_bar_fg
+  rotate: false
+  xy: 213, 19
+  size: 25, 25
+  orig: 25, 25
+  offset: 0, 0
+  index: -1
+map_image
+  rotate: false
+  xy: 213, 1
+  size: 20, 16
+  orig: 20, 16
+  offset: 0, 0
+  index: -1

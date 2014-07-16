@@ -1,0 +1,8 @@
+<root>
+    <tile_set>data/tile_set.xml</tile_set>
+    <rectangle>
+        <pos>0:0</pos>
+        <dims>20:20</dims>
+        <hex_type>ground</hex_type>
+    </rectangle>	
+</root>

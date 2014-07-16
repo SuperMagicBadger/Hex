@@ -1,0 +1,211 @@
+
+hex_wars.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+target_cursor
+  rotate: false
+  xy: 1, 172
+  size: 86, 78
+  orig: 86, 78
+  offset: 0, 0
+  index: 2
+target_cursor
+  rotate: false
+  xy: 1, 94
+  size: 83, 76
+  orig: 83, 76
+  offset: 0, 0
+  index: 1
+target_cursor
+  rotate: false
+  xy: 89, 176
+  size: 82, 74
+  orig: 82, 74
+  offset: 0, 0
+  index: 0
+unit_portrait
+  rotate: false
+  xy: 1, 22
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+black_cursor
+  rotate: false
+  xy: 173, 186
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+blue_cursor
+  rotate: false
+  xy: 231, 186
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+blue_hex_highlight
+  rotate: false
+  xy: 289, 186
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+blue_tile
+  rotate: false
+  xy: 347, 186
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+green_tile
+  rotate: false
+  xy: 405, 186
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+grey_tile
+  rotate: false
+  xy: 73, 28
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+window
+  rotate: false
+  xy: 463, 212
+  size: 35, 38
+  split: 2, 2, 28, 2
+  orig: 35, 38
+  offset: 0, 0
+  index: -1
+hex_cursor
+  rotate: false
+  xy: 86, 106
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+red_tile
+  rotate: false
+  xy: 144, 110
+  size: 56, 64
+  orig: 56, 64
+  offset: 0, 0
+  index: -1
+green_circle_selected
+  rotate: false
+  xy: 202, 147
+  size: 33, 37
+  orig: 33, 37
+  offset: 0, 0
+  index: 2
+frame_bg
+  rotate: false
+  xy: 202, 112
+  size: 33, 33
+  split: 5, 5, 4, 4
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+green_circle_idle
+  rotate: false
+  xy: 237, 151
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: 0
+green_circle_selected
+  rotate: false
+  xy: 237, 151
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: 0
+green_circle_idle
+  rotate: false
+  xy: 237, 116
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: 1
+green_circle_idle
+  rotate: false
+  xy: 272, 151
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: 2
+green_circle_selected
+  rotate: false
+  xy: 272, 116
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: 1
+user_patch
+  rotate: false
+  xy: 307, 151
+  size: 33, 33
+  split: 6, 6, 6, 6
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+green_circle_walk
+  rotate: false
+  xy: 307, 117
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+green_circle_walk
+  rotate: false
+  xy: 307, 117
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+green_circle_walk
+  rotate: false
+  xy: 307, 117
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+green_circle_walk
+  rotate: false
+  xy: 342, 152
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+green_line_bg
+  rotate: false
+  xy: 376, 157
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: -1
+grey_line_bg
+  rotate: false
+  xy: 409, 157
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: -1
+end_turn_image
+  rotate: false
+  xy: 1, 1
+  size: 19, 19
+  orig: 19, 19
+  offset: 0, 0
+  index: -1
+map_image
+  rotate: false
+  xy: 463, 194
+  size: 20, 16
+  orig: 20, 16
+  offset: 0, 0
+  index: -1

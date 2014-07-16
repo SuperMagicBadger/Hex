@@ -1,0 +1,75 @@
+<root>
+    <tile>
+        <name>ground</name>
+        <passable>true</passable>
+        <movecost>1</movecost>
+        <cover>0</cover>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>grey_tile</texture>
+        </sprite>
+    </tile>
+    
+    <tile>
+        <name>mountain</name>
+        <passable>true</passable>
+        <movecost>2</movecost>
+        <cover>25</cover>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>red_tile</texture>
+        </sprite>
+    </tile>
+    
+    <tile>
+        <name>water</name>
+        <passable>false</passable>
+        <movecost>-1</movecost>
+        <cover>25</cover>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>blue_tile</texture>
+        </sprite>
+    </tile>
+
+    <highlight>
+        <type>move</type>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>blue_cursor</texture>
+        </sprite>
+    </highlight>
+
+    <highlight>
+        <type>dash</type>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>blue_hex_highlight</texture>
+        </sprite>
+    </highlight>
+
+    <highlight>
+        <type>target</type>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>hex_cursor</texture>
+        </sprite>
+    </highlight>
+
+    <highlight>
+        <type>selected</type>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>hex_cursor</texture>
+        </sprite>
+    </highlight>  
+
+	<highlight>
+        <type>fog</type>
+        <sprite>
+            <atlas>data/hex_wars.pack</atlas>
+            <texture>black_cursor</texture>
+        </sprite>
+    </highlight>
+    
+</root>

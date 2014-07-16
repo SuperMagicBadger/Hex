@@ -1,0 +1,33 @@
+
+default_tiles.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dirt
+  rotate: false
+  xy: 1, 1
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1
+forest
+  rotate: false
+  xy: 58, 1
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 115, 1
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1
+hills
+  rotate: false
+  xy: 172, 1
+  size: 55, 64
+  orig: 55, 64
+  offset: 0, 0
+  index: -1

@@ -24,14 +24,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.cowthegreat.hexwars.HexWars;
 import com.cowthegreat.hexwars.controlers.CameraController;
-import com.cowthegreat.hexwars.controlers.MoveAction;
+import com.cowthegreat.hexwars.graphics.MoveAction;
 import com.cowthegreat.hexwars.graphics.Unit;
 import com.cowthegreat.hexwars.graphics.UnitBlock;
 import com.cowthegreat.hexwars.hex.HexBuffer;
 import com.cowthegreat.hexwars.hex.HexKey;
 import com.cowthegreat.hexwars.hex.HexMath;
 import com.cowthegreat.hexwars.hex.HexMath.Orientation;
-import com.cowthegreat.hexwars.units.HexPlanet;
 
 public class TestRenderScreen implements Screen {
 	public static String SCREEN_TAG = "test_render_screen";
@@ -94,15 +93,13 @@ public class TestRenderScreen implements Screen {
 		
 		
 		// model loading		
-		block = new UnitBlock(game.assets.getPool("untitled.g3db"), new Vector3(hm.getWidth(), 5,  hm.getHeight()));
+		block = new UnitBlock(game.miPool.getPool("untitled.g3db"), new Vector3(hm.getWidth(), 5,  hm.getHeight()));
 		block.setPosition(0, 0, 0);
 		block.setSlotCounts(3, 1, 2);
 		block.setCount(block.maxCount());
 		
 		// planet
-		planet = new Unit(game.assets.getPool("planet.g3db").obtain(), hm, new HexPlanet());
 		HexKey pos = HexKey.obtainKey(1, 1);
-		planet.entity.setPosition(pos);
 		pos.release();
 		
 		// set environment
@@ -112,7 +109,7 @@ public class TestRenderScreen implements Screen {
 		
 		ui = new Stage();
 		LabelStyle lstyle = new LabelStyle();
-		lstyle.font = game.am.get("fonts/small_font_25.fnt", BitmapFont.class);
+		lstyle.font = game.assets.get("fonts/small_font_25.fnt", BitmapFont.class);
 		lstyle.fontColor = Color.WHITE;
 		fpsLabel = new Label("asdf", lstyle);
 		ui.addActor(fpsLabel);

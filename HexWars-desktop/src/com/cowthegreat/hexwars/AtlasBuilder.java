@@ -33,6 +33,7 @@ public class AtlasBuilder {
 		settings.maxHeight = settings.maxWidth = 1024;
 		settings.filterMag = TextureFilter.Nearest;
 		settings.filterMin = TextureFilter.Nearest;
+		settings.pot = true;
 		settings.pot = false;
 		
 		// build atlas

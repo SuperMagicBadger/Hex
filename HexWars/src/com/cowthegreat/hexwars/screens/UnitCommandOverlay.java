@@ -23,7 +23,7 @@ public class UnitCommandOverlay extends Table {
 		this.game = game;
 		
 		TextButtonStyle tbs = new TextButtonStyle();
-		tbs.font = game.am.get("fonts/small_font_25.fnt", BitmapFont.class);
+		tbs.font = game.assets.get("fonts/small_font_25.fnt", BitmapFont.class);
 		
 		TextButton move = new TextButton("move", tbs);
 		TextButton attack = new TextButton("attack", tbs);

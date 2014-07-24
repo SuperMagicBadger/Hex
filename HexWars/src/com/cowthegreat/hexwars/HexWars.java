@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.cowthegreat.hexwars.hex.HexMath;
 import com.cowthegreat.hexwars.hex.HexMath.Orientation;
 import com.cowthegreat.hexwars.screens.GameScreen;
@@ -21,11 +20,10 @@ import com.cowthegreat.hexwars.screens.TestRenderScreen;
 public class HexWars extends Game {
 	
 	public OrthographicCamera camera;
-	public ShapeRenderer shapeBatch;
 	public FPSLogger fpslogger;
 	
-	public AssetsPool assets;
-	public AssetManager am;
+	public ModelInstancePool miPool;
+	public AssetManager assets;
 	
 	private HashMap<String, Screen> screenMap;
 	
@@ -35,13 +33,12 @@ public class HexWars extends Game {
 		float h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera(w, h);
-		shapeBatch = new ShapeRenderer();
 
 		HexMath.get().o = Orientation.POINTY;
 		HexMath.get().side = 30f;
 
-		am = new AssetManager();
-		assets = new AssetsPool(am);
+		assets = new AssetManager();
+		miPool = new ModelInstancePool(assets);
 		
 		loadAssets();
 		loadScreens();
@@ -53,11 +50,11 @@ public class HexWars extends Game {
 	}
 
 	public void loadAssets(){
-		am.load("untitled.g3db", Model.class);
-		am.load("planet.g3db", Model.class);
-		am.load("ui.atlas", TextureAtlas.class);
-		am.load("fonts/small_font_25.fnt", BitmapFont.class);
-		am.finishLoading();
+		assets.load("untitled.g3db", Model.class);
+		assets.load("planet.g3db", Model.class);
+		assets.load("ui.atlas", TextureAtlas.class);
+		assets.load("fonts/small_font_25.fnt", BitmapFont.class);
+		assets.finishLoading();
 	}
 	
 	public void loadScreens(){
@@ -68,7 +65,7 @@ public class HexWars extends Game {
 	
 	@Override
 	public void dispose() {
-		shapeBatch.dispose();
+		assets.dispose();
 	}
 	
 	public void setScreen(String screenName){

@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="libs/gdx-backend-lwjgl-natives.jar"/>
 	<classpathentry kind="lib" path="libs/gdx-natives.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/libgdx-0.9.8/gdx-texturepacker.jar"/>
+	<classpathentry kind="lib" path="libs/luajava-1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

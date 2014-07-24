@@ -12,6 +12,21 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 
 public class HexBuffer {
+	
+	public static class HexDescriptor{
+		public HexDescriptor(){
+			inner = Color.BLACK;
+			outer = Color.RED;
+		}
+		
+		public HexDescriptor(Color inner, Color outer){
+			this.inner = inner;
+			this.outer = outer;
+		}
+		
+		public Color inner;
+		public Color outer;
+	}
 
 	public final int hexCount;
 	public final int vertexCount;
@@ -160,6 +175,10 @@ public class HexBuffer {
 		hasBegun = true;
 	}
 
+	public void draw(HexKey hk, HexMath hm, HexDescriptor desc){
+		draw(hk, hm, desc.inner, desc.outer);	
+	}
+	
 	public void draw(HexKey hk, HexMath hm, Color center, Color edge) {
 		if (!hasBegun) {
 			return;

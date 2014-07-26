@@ -14,7 +14,6 @@ import com.cowthegreat.hexwars.component.PositionComponent;
 import com.cowthegreat.hexwars.component.RenderComponent;
 import com.cowthegreat.hexwars.hex.HexBuffer;
 import com.cowthegreat.hexwars.hex.HexKey;
-import com.cowthegreat.hexwars.hex.HexMap;
 import com.cowthegreat.hexwars.hex.HexMath;
 
 public class RenderSystem {
@@ -25,6 +24,11 @@ public class RenderSystem {
 	public RenderSystem(){
 		hexBuffer = new HexBuffer(100);
 		modelBuffer = new ModelBatch();
+		
+		hexBuffer.setGlowStrength(0.5f);
+		hexBuffer.setInnerRadius(0.15f);
+		hexBuffer.setOuterRadius(0.95f);
+		hexBuffer.setOutlineColor(0.75f, 0.75f, 0.75f, 1);
 		
 		environ = new Environment();
 		environ.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
@@ -51,13 +55,8 @@ public class RenderSystem {
 		modelBuffer.end();
 	}
 	
-	public void renderHex(Camera camera, HexMap map, HexKey u_left, HexKey b_right){
+	public void renderHex(Camera camera, HexPositionMap map, HexKey u_left, HexKey b_right){
 		hexBuffer.begin(camera.combined);
-		hexBuffer.setGlowStrength(0.5f);
-		hexBuffer.setInnerRadius(0.15f);
-		hexBuffer.setOuterRadius(0.95f);
-		hexBuffer.setOutlineColor(0.75f, 0.75f, 0.75f, 1);
-
 		HexKey hk = HexKey.obtainKey();
 		for(int i = u_left.oddr_Q() - 2; i < b_right.oddr_Q() + 2; i++){
 			for(int j = u_left.oddr_R() - 2; j < b_right.oddr_R() + 2; j++){
@@ -70,11 +69,10 @@ public class RenderSystem {
 	}
 	
 	public void renderHex(Entity entity){
-		RenderComponent ren = (RenderComponent) entity.getComponent(componentType.RENDER);
 		HexPositionComponent pos = (HexPositionComponent) entity.getComponent(componentType.HEX_POSITION);
 		
-		if(ren != null && pos != null){
-			hexBuffer.draw(pos.position, HexMath.get(), ren.descriptor);
+		if(pos != null){
+			hexBuffer.draw(pos.position, HexMath.get(), pos.descritor);
 		}
 	}
 }

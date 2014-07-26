@@ -1,5 +1,6 @@
 package com.cowthegreat.hexwars.framework;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.cowthegreat.hexwars.component.Component.componentType;
 import com.cowthegreat.hexwars.component.HexPositionComponent;
@@ -10,11 +11,7 @@ import com.cowthegreat.hexwars.hex.HexMath;
 
 public class MovementSystem {
 	
-	public void move(Entity ent, HexKey destination){
-		
-	}
-	
-	public void move(Entity ent, Vector3 destination, float duration){
+	public static void move(Entity ent, Vector3 destination, float duration){
 		MovementComponent movement = (MovementComponent) ent.getComponent(componentType.MOVEMENT);
 		PositionComponent position = (PositionComponent) ent.getComponent(componentType.POSITION);
 		if(movement == null || position == null){
@@ -26,7 +23,7 @@ public class MovementSystem {
 		movement.reset();
 	}
 	
-	public boolean isMoving(Entity ent){
+	public static boolean isMoving(Entity ent){
 		MovementComponent mover = (MovementComponent) ent.getComponent(componentType.MOVEMENT);
 		PositionComponent pos = (PositionComponent) ent.getComponent(componentType.POSITION);
 		if(mover != null && pos != null && mover.duration > 0){
@@ -35,7 +32,7 @@ public class MovementSystem {
 		return false;
 	}
 	
-	public void update(Entity ent, float delta){
+	public static void update(Entity ent, float delta){
 		if(!isMoving(ent)){
 			return;
 		}
@@ -57,7 +54,7 @@ public class MovementSystem {
 		}
 	}
 	
-	public void place(Entity ent, Vector3 newpos){
+	public static void place(Entity ent, Vector3 newpos){
 		PositionComponent pos = (PositionComponent) ent.getComponent(componentType.POSITION);
 		HexPositionComponent hex = (HexPositionComponent) ent.getComponent(componentType.HEX_POSITION);
 		
@@ -68,6 +65,20 @@ public class MovementSystem {
 				HexKey hk = HexMath.get().pixelToHex(pos.position.x, pos.position.z);
 				hex.position.set(hk);
 				hk.release();
+			}
+		}
+	}
+
+	public static void place(Entity ent, HexKey key){
+		PositionComponent pos = (PositionComponent) ent.getComponent(componentType.POSITION);
+		HexPositionComponent hex = (HexPositionComponent) ent.getComponent(componentType.HEX_POSITION);
+		
+		if(hex != null){
+			hex.position.set(key);
+			
+			if(pos != null){
+				Vector2 v2d = HexMath.get().hexToPixel(key);
+				pos.position.set(v2d.x, 0, v2d.y);
 			}
 		}
 	}

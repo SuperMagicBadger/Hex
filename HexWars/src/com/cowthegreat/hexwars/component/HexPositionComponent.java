@@ -1,5 +1,6 @@
 package com.cowthegreat.hexwars.component;
 
+import com.cowthegreat.hexwars.hex.HexBuffer.HexDescriptor;
 import com.cowthegreat.hexwars.hex.HexKey;
 
 public class HexPositionComponent implements Component{
@@ -9,4 +10,5 @@ public class HexPositionComponent implements Component{
 	}
 	
 	public HexKey position = HexKey.obtainKey();
+	public HexDescriptor descritor = new HexDescriptor();
 }

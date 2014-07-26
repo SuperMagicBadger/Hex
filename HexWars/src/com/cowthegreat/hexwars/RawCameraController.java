@@ -1,4 +1,4 @@
-package com.cowthegreat.hexwars.controlers;
+package com.cowthegreat.hexwars;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Intersector;

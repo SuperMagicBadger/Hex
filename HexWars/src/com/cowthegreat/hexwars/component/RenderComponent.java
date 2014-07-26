@@ -1,7 +1,8 @@
 package com.cowthegreat.hexwars.component;
 
+import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.cowthegreat.hexwars.hex.HexBuffer.HexDescriptor;
 
 public class RenderComponent implements Component {
 
@@ -11,5 +12,8 @@ public class RenderComponent implements Component {
 	}
 
 	public ModelInstance model = null;
-	public HexDescriptor descriptor = null;
+	
+	public void render(ModelBatch batch, Environment environ){
+		
+	}
 }

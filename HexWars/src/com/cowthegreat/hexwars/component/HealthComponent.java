@@ -9,6 +9,5 @@ public class HealthComponent implements Component {
 
 	public int health;
 	public int maxHealth;
-	
 	public int armor;
 }

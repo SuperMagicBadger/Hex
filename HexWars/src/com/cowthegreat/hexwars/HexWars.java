@@ -14,8 +14,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.cowthegreat.hexwars.hex.HexMath;
 import com.cowthegreat.hexwars.hex.HexMath.Orientation;
-import com.cowthegreat.hexwars.screens.GameScreen;
-import com.cowthegreat.hexwars.screens.TestRenderScreen;
+import com.cowthegreat.hexwars.screens.ComponentScreen;
 
 public class HexWars extends Game {
 	
@@ -42,8 +41,7 @@ public class HexWars extends Game {
 		
 		loadAssets();
 		loadScreens();
-		setScreen(TestRenderScreen.SCREEN_TAG);
-		setScreen(GameScreen.SCREEN_TAG);
+		setScreen(ComponentScreen.SCREEN_TAG);
 		
 		fpslogger = new FPSLogger();
 		
@@ -59,8 +57,7 @@ public class HexWars extends Game {
 	
 	public void loadScreens(){
 		screenMap = new HashMap<String, Screen>();
-		screenMap.put(GameScreen.SCREEN_TAG, new GameScreen(this));
-		screenMap.put(TestRenderScreen.SCREEN_TAG, new TestRenderScreen(this));
+		screenMap.put(ComponentScreen.SCREEN_TAG, new ComponentScreen());
 	}
 	
 	@Override

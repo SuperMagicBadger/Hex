@@ -6,10 +6,14 @@ import com.cowthegreat.hexwars.component.Component;
 import com.cowthegreat.hexwars.component.Component.componentType;
 
 public class Entity {
+	@SuppressWarnings("rawtypes")
+	public HashMap<Class, Component> classComonentMap;
 	public HashMap<componentType, Component> componentMap;
 	
+	@SuppressWarnings("rawtypes")
 	public Entity() {
 		componentMap = new HashMap<componentType, Component>();
+		classComonentMap = new HashMap<Class, Component>();
 	}
 	
 	public boolean hasComponent(componentType type){
@@ -29,5 +33,9 @@ public class Entity {
 			return componentMap.get(type);
 		}
 		return null;
+	}
+	
+	public <T> Component getComponent(Class<T> componentClass){
+		return classComonentMap.get(componentClass);
 	}
 }

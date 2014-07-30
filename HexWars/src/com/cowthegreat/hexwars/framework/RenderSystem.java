@@ -36,13 +36,16 @@ public class RenderSystem {
 	}
 	
 	public void renderModel(Entity entity){
-		RenderComponent ren = (RenderComponent) entity.getComponent(componentType.RENDER);
-		PositionComponent pos = (PositionComponent) entity.getComponent(componentType.POSITION);
+		RenderComponent ren = 
+				(RenderComponent) entity.getComponent(componentType.RENDER);
+		PositionComponent pos = 
+				(PositionComponent) entity.getComponent(componentType.POSITION);
 		
 		if(ren != null && pos != null){
 			ren.model.transform.idt();
 			ren.model.transform.translate(pos.position);
 			ren.model.transform.rotate(Vector3.Y, pos.rotation);
+			
 			modelBuffer.render(ren.model, environ);
 		}
 	}
@@ -56,6 +59,12 @@ public class RenderSystem {
 	}
 	
 	public void renderHex(Camera camera, HexPositionMap map, HexKey u_left, HexKey b_right){
+		
+		hexBuffer.setGlowStrength(0.5f);
+		hexBuffer.setInnerRadius(0.15f);
+		hexBuffer.setOuterRadius(0.95f);
+		hexBuffer.setOutlineColor(0.75f, 0.75f, 0.75f, 1);
+		
 		hexBuffer.begin(camera.combined);
 		HexKey hk = HexKey.obtainKey();
 		for(int i = u_left.oddr_Q() - 2; i < b_right.oddr_Q() + 2; i++){
@@ -69,7 +78,8 @@ public class RenderSystem {
 	}
 	
 	public void renderHex(Entity entity){
-		HexPositionComponent pos = (HexPositionComponent) entity.getComponent(componentType.HEX_POSITION);
+		HexPositionComponent pos = 
+				(HexPositionComponent) entity.getComponent(componentType.HEX_POSITION);
 		
 		if(pos != null){
 			hexBuffer.draw(pos.position, HexMath.get(), pos.descritor);

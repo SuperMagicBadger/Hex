@@ -6,6 +6,7 @@ import com.cowthegreat.hexwars.component.Component.componentType;
 import com.cowthegreat.hexwars.component.HexPositionComponent;
 import com.cowthegreat.hexwars.component.MovementComponent;
 import com.cowthegreat.hexwars.component.PositionComponent;
+import com.cowthegreat.hexwars.component.RotationComponent;
 import com.cowthegreat.hexwars.hex.HexKey;
 import com.cowthegreat.hexwars.hex.HexMath;
 
@@ -33,24 +34,29 @@ public class MovementSystem {
 	}
 	
 	public static void update(Entity ent, float delta){
-		if(!isMoving(ent)){
-			return;
-		}
-
 		MovementComponent mover = (MovementComponent) ent.getComponent(componentType.MOVEMENT);
 		PositionComponent pos = (PositionComponent) ent.getComponent(componentType.POSITION);
 		HexPositionComponent hex = (HexPositionComponent) ent.getComponent(componentType.HEX_POSITION);
+		RotationComponent rot = (RotationComponent) ent.getComponent(componentType.ROTATION);
 		
-		pos.position = mover.getPosition(pos.position, delta);
+		if(pos != null && mover != null){
+			pos.position = mover.getPosition(pos.position, delta);
+			
+			if(mover.faceMovement){
+				pos.face(mover.destination);
+			}
+			
+			if(hex != null){
+				HexKey hk = HexMath.get().pixelToHex(pos.position.x, pos.position.z);
+				hex.position.set(hk);
+				hk.release();
+			}
+		}		
 		
-		if(hex != null){
-			HexKey hk = HexMath.get().pixelToHex(pos.position.x, pos.position.z);
-			hex.position.set(hk);
-			hk.release();
-		}
-		
-		if(mover.faceMovement){
-			pos.face(mover.destination);
+		if(rot != null && (rot.duration == -1 || rot.elapsed < rot.duration)){
+			pos.rotation += rot.rotationRate * delta;
+			pos.rotation = pos.rotation % 360;
+			rot.elapsed += delta;
 		}
 	}
 	

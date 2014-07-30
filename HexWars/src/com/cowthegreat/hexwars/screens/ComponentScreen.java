@@ -3,18 +3,29 @@ package com.cowthegreat.hexwars.screens;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.cowthegreat.hexwars.CameraController;
+import com.cowthegreat.hexwars.HexWars;
 import com.cowthegreat.hexwars.framework.Entity;
+import com.cowthegreat.hexwars.framework.EntityFactory;
 import com.cowthegreat.hexwars.framework.HexPositionMap;
 import com.cowthegreat.hexwars.framework.MovementSystem;
 import com.cowthegreat.hexwars.framework.RenderSystem;
 import com.cowthegreat.hexwars.hex.HexKey;
 import com.cowthegreat.hexwars.hex.HexMath;
 import com.cowthegreat.hexwars.hex.HexMath.Orientation;
+import com.cowthegreat.hexwars.ui.InventoryTable;
+
+import com.badlogic.gdx.input.GestureDetector.GestureAdapter;
 
 public class ComponentScreen implements Screen {
 
@@ -27,15 +38,27 @@ public class ComponentScreen implements Screen {
 	PerspectiveCamera raw;
 	CameraController con;
 	
+	GestureDetector gestures;
+	InputProcessor ip;
+	
 	HexPositionMap hexPMap;
 
-	public ComponentScreen() {
+	EntityFactory ef;
+	
+	HexKey hk;
+	
+	// menus and overlays
+	Stage uiStage;
+	InventoryTable inv;
+	
+	public ComponentScreen(HexWars game) {
 		// systems
+		ef = new EntityFactory(game.assets);
+		
 		renderSys = new RenderSystem();
 		entityList = new ArrayList<Entity>();
 
 		hexPMap = new HexPositionMap(15, 15);
-		hexPMap.gen(0, 0, 0);
 		
 		HexMath.get().o = Orientation.POINTY; 
 		HexMath.get().side = 5;
@@ -57,11 +80,42 @@ public class ComponentScreen implements Screen {
 						hexPMap.hexWidth * HexMath.get().getWidth() - HexMath.get().getWidth() / 2,
 						hexPMap.hexHeight * HexMath.get().getHeight() - HexMath.get().getHeight() / 2);
 
+		// menus and overlays
+		uiStage = new Stage();
+		inv = new InventoryTable(game);
+		System.out.println(inv.getPrefWidth() + " -- " + inv.getPrefHeight());
+		inv.setPosition(50, 50);
+		
+		uiStage.addActor(inv);
+		System.out.println(inv.getWidth() + " -- " + inv.getHeight());
+		
+		hk = HexKey.obtainKey();
+		
+		gestures = new GestureDetector(new GestureAdapter(){
+			@Override
+			public boolean tap(float x, float y, int count, int button) {
+				Vector3 v3 = new Vector3();
+				con.pick(x, y, v3);
+				hk.release();
+				hk = HexMath.get().pixelToHex(v3.x, v3.z);
+				
+				inv.display(hexPMap.get(hk));
+				return true;
+			}
+		});
 	}
 	
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(con);
+		// generate map
+		for(int i = 0; i < 3; i++){
+			Entity e = ef.createPlanet();
+			MovementSystem.place(e, HexKey.obtainKey(1, 1));
+			hexPMap.add(e);
+			entityList.add(e);
+		}
+		
+		Gdx.input.setInputProcessor(new InputMultiplexer(con, gestures, uiStage));
 	}
 
 	@Override
@@ -87,22 +141,35 @@ public class ComponentScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 		
 		// UPDATE
+		uiStage.act(delta);
 		con.update();
-		hexPMap.update();
+		
 		for(Entity e : entityList){
 			MovementSystem.update(e, delta);
 		}
+		hexPMap.update();
 		
 		// RENDER HEX
 		Rectangle r = con.getDimensions();
 		HexKey u_left = HexMath.get().pixelToHex(r.x, r.y);
 		HexKey b_right = HexMath.get().pixelToHex(r.x + r.width, r.y + r.height);
 		renderSys.renderHex(raw, hexPMap, u_left, b_right);
+		renderSys.renderModel(raw, entityList);
 		u_left.release();
 		b_right.release();
 		
+		renderSys.hexBuffer.setGlowStrength(0);
+		renderSys.hexBuffer.setOutlineColor(0f, 1f, 0f, 1);
+		renderSys.hexBuffer.setOuterRadius(0.85f);
+		renderSys.hexBuffer.begin(raw.combined);
+		renderSys.hexBuffer.draw(hk, HexMath.get(), Color.CLEAR, Color.CLEAR);
+		renderSys.hexBuffer.end();
+		
 		// RENDER MODELS
 		renderSys.renderModel(raw, entityList);
+		
+		// RENDER UI
+		uiStage.draw();
 	}
 
 	@Override

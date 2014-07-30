@@ -3,7 +3,7 @@ package com.cowthegreat.hexwars.component;
 public class InventoryComponent implements Component{
 	@Override
 	public componentType getComponentType() {
-		return componentType.POSITION;
+		return componentType.INVENTORY;
 	}
 	
 	public int supplies = 0;
@@ -17,4 +17,20 @@ public class InventoryComponent implements Component{
 	public int maxFuel = -1;
 	public int maxMaterials = -1;
 	public int maxChem = -1;
+	
+	public void setInventory(int s, int m, int c, int a, int f){
+		supplies = s;
+		materials = m;
+		chem = c;
+		ammo = a;
+		fuel = f;
+	}
+	
+	public void setMax(int s, int m, int c, int a, int f){
+		maxSupplies = s;
+		maxMaterials = m;
+		maxChem = c;
+		maxAmmo = a;
+		maxFuel = f;
+	}
 }

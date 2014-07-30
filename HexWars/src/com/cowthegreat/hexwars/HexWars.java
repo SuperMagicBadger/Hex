@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -26,6 +27,8 @@ public class HexWars extends Game {
 	
 	private HashMap<String, Screen> screenMap;
 	
+	public static AssetDescriptor<BitmapFont> fontDescriptor;
+	
 	@Override
 	public void create() {
 		float w = Gdx.graphics.getWidth();
@@ -44,7 +47,6 @@ public class HexWars extends Game {
 		setScreen(ComponentScreen.SCREEN_TAG);
 		
 		fpslogger = new FPSLogger();
-		
 	}
 
 	public void loadAssets(){
@@ -57,7 +59,7 @@ public class HexWars extends Game {
 	
 	public void loadScreens(){
 		screenMap = new HashMap<String, Screen>();
-		screenMap.put(ComponentScreen.SCREEN_TAG, new ComponentScreen());
+		screenMap.put(ComponentScreen.SCREEN_TAG, new ComponentScreen(this));
 	}
 	
 	@Override

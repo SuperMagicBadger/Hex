@@ -8,7 +8,8 @@ public interface Component {
 		INVENTORY,
 		WEAPONS,
 		HEALTH,
-		RENDER;
+		RENDER, 
+		ROTATION;
 	}
 	
 	public componentType getComponentType();

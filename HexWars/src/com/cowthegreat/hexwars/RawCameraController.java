@@ -59,9 +59,6 @@ public class RawCameraController {
 		mv.set(x, y, z);
 		mv.mul(quat.setEulerAngles(rotation.x, 0, 0));
 		center.add(mv);
-		
-
-		
 	}
 	
 	public void zoom(float dist){

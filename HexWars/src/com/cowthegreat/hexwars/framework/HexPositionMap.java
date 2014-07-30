@@ -82,20 +82,6 @@ public class HexPositionMap {
 		return (hk.oddr_Q() >= 0 && hk.oddr_Q() < hexWidth) && (hk.oddr_R() >= 0 && hk.oddr_R() < hexHeight);
 	}
 	
-	public void gen(int w, int h, int count){
-		Entity e = EntityFactory.createPlanet();
-		HexKey hk = HexKey.obtainKey();
-		hk.setOddR(0, 0);
-		MovementSystem.place(e, hk);
-		add(e);
-		
-		e = EntityFactory.createPlanet();
-		hk = HexKey.obtainKey();
-		hk.setOddR(1, 1);
-		MovementSystem.place(e, hk);
-		add(e);
-	}
-	
 	/*
 	public void generate(int w, int h, int pCount, int uCount){
 		Random rng = new Random();

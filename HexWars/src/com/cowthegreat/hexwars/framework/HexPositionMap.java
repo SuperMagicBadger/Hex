@@ -6,6 +6,7 @@ import java.util.HashSet;
 import com.badlogic.gdx.graphics.Color;
 import com.cowthegreat.hexwars.component.Component.componentType;
 import com.cowthegreat.hexwars.component.HexPositionComponent;
+import com.cowthegreat.hexwars.component.UnitComponent;
 import com.cowthegreat.hexwars.hex.HexBuffer.HexDescriptor;
 import com.cowthegreat.hexwars.hex.HexKey;
 
@@ -13,6 +14,8 @@ public class HexPositionMap {
 
 	HashSet<Entity> entitySet;
 	HashMap<HexKey, Entity> entityLocations;
+
+	HashMap<HexKey, Integer> tileMap;
 	
 	public int hexWidth;
 	public int hexHeight;
@@ -81,36 +84,11 @@ public class HexPositionMap {
 	public boolean inBounds(HexKey hk){
 		return (hk.oddr_Q() >= 0 && hk.oddr_Q() < hexWidth) && (hk.oddr_R() >= 0 && hk.oddr_R() < hexHeight);
 	}
-	
-	/*
-	public void generate(int w, int h, int pCount, int uCount){
-		Random rng = new Random();
-		HexKey temKey = HexKey.obtainKey();
-		HexPlanet hp;
-		
-		// set dims
-		hexWidth = w;
-		hexHeight = h;
-		
-		// gen units
-		
-		// gen planets
-		temKey.setOddR(0, 0);
-		hp = new HexPlanet();
-		hp.setPosition(temKey);
-		add(hp);
-		
-		for(int i = 1; i < pCount; i++){
-			hp = new HexPlanet();
-			int x = rng.nextInt(hexWidth);
-			int y = rng.nextInt(hexHeight);
-			temKey.setOddR(x, y);
-			hp.setPosition(temKey);
-			add(hp);
-			System.out.println(temKey + " --- " + x + " " + y);
+
+	public int getCost(HexKey key, UnitComponent unit) {
+		if(tileMap.containsKey(key)){
+			return tileMap.get(key);
 		}
-		
-		temKey.release();
+		return 0;
 	}
-	*/
 }

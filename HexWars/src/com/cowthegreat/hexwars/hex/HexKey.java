@@ -105,7 +105,10 @@ public class HexKey implements Comparable<HexKey> {
 		return "axial {" + q + ", " + r + "}, oddR {" + oddr_Q() + ", " + oddr_R() + "}";
 	}
 
-	public float distange(HexKey hk) {
+	public float distance(HexKey hk) {
+		if(this == hk){
+			return 0;
+		}
 		return (Math.abs(q - hk.q) + Math.abs(r - hk.r) + Math.abs(q + r - hk.q
 				- hk.r)) / 2f;
 	}

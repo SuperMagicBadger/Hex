@@ -21,6 +21,7 @@ public class MovementComponent implements Component {
 	}
 	
 	public Vector3 getPosition(Vector3 pos, float delta){
+		if(elapsed == duration) return destination;
 		elapsed += delta;
 		elapsed = elapsed > duration ? duration : elapsed;
 		

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.input.GestureDetector.GestureAdapter;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -24,8 +24,7 @@ import com.cowthegreat.hexwars.hex.HexKey;
 import com.cowthegreat.hexwars.hex.HexMath;
 import com.cowthegreat.hexwars.hex.HexMath.Orientation;
 import com.cowthegreat.hexwars.ui.InventoryTable;
-
-import com.badlogic.gdx.input.GestureDetector.GestureAdapter;
+import com.cowthegreat.hexwars.ui.WeaponTable;
 
 public class ComponentScreen implements Screen {
 
@@ -39,7 +38,6 @@ public class ComponentScreen implements Screen {
 	CameraController con;
 	
 	GestureDetector gestures;
-	InputProcessor ip;
 	
 	HexPositionMap hexPMap;
 
@@ -50,6 +48,7 @@ public class ComponentScreen implements Screen {
 	// menus and overlays
 	Stage uiStage;
 	InventoryTable inv;
+	WeaponTable wep;
 	
 	public ComponentScreen(HexWars game) {
 		// systems
@@ -83,11 +82,11 @@ public class ComponentScreen implements Screen {
 		// menus and overlays
 		uiStage = new Stage();
 		inv = new InventoryTable(game);
-		System.out.println(inv.getPrefWidth() + " -- " + inv.getPrefHeight());
-		inv.setPosition(50, 50);
+		wep = new WeaponTable(game);
+		wep.setPosition(inv.getWidth() + 10, 0);
 		
 		uiStage.addActor(inv);
-		System.out.println(inv.getWidth() + " -- " + inv.getHeight());
+		uiStage.addActor(wep);
 		
 		hk = HexKey.obtainKey();
 		
@@ -100,6 +99,7 @@ public class ComponentScreen implements Screen {
 				hk = HexMath.get().pixelToHex(v3.x, v3.z);
 				
 				inv.display(hexPMap.get(hk));
+				wep.display(hexPMap.get(hk));
 				return true;
 			}
 		});
@@ -110,10 +110,17 @@ public class ComponentScreen implements Screen {
 		// generate map
 		for(int i = 0; i < 3; i++){
 			Entity e = ef.createPlanet();
-			MovementSystem.place(e, HexKey.obtainKey(1, 1));
+			HexKey k = HexKey.obtainKey();
+			k.setOddR((int) (Math.random() * hexPMap.hexWidth), (int) (Math.random() * hexPMap.hexHeight));
+			MovementSystem.place(e, k);;
 			hexPMap.add(e);
 			entityList.add(e);
 		}
+		
+		Entity e = ef.createFleet();
+		MovementSystem.place(e, HexKey.obtainKey(0, 0));
+		entityList.add(e);
+		hexPMap.add(e);
 		
 		Gdx.input.setInputProcessor(new InputMultiplexer(con, gestures, uiStage));
 	}

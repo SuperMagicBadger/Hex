@@ -47,6 +47,8 @@ public class InventoryTable extends Table{
 		add(fuel).left();
 		add(fValue).right();
 		pack();
+		
+		setVisible(false);
 	}
 	
 	public boolean display(Entity ent){
@@ -58,22 +60,14 @@ public class InventoryTable extends Table{
 		setVisible(comp != null);
 		
 		if(comp != null){
-			sValue.setText(comp.supplies + "/" + comp.maxSupplies);
-			mValue.setText(comp.materials + "/" + comp.maxMaterials);
-			cValue.setText(comp.chem + "/" + comp.maxChem);
-			aValue.setText(comp.ammo + "/" + comp.maxAmmo);
-			fValue.setText(comp.fuel + "/" + comp.maxFuel);
-		} 
-//		else {
-//			System.out.println("nope");
-//			sValue.setText("0/0");
-//			mValue.setText("0/0");
-//			cValue.setText("0/0");
-//			aValue.setText("0/0");
-//			fValue.setText("0/0");
-//		}
+			sValue.setText(comp.supplies + (comp.maxSupplies > 0 ? ("/" + comp.maxSupplies) : "" ));
+			mValue.setText(comp.materials + (comp.maxMaterials > 0 ? ("/" + comp.maxMaterials) : "" ));
+			cValue.setText(comp.chem + (comp.maxChem > 0 ? ("/" + comp.maxChem) : "" ));
+			aValue.setText(comp.ammo + (comp.maxAmmo > 0 ? ("/" + comp.maxAmmo) : "" ));
+			fValue.setText(comp.fuel + (comp.maxFuel > 0 ? ("/" + comp.maxFuel) : "" ));
+		}
 		
-		invalidate();
+		pack();
 		return comp != null;
 	}
 }

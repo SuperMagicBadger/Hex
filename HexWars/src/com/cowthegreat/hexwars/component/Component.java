@@ -9,7 +9,8 @@ public interface Component {
 		WEAPONS,
 		HEALTH,
 		RENDER, 
-		ROTATION;
+		ROTATION, 
+		UNIT_DATA;
 	}
 	
 	public componentType getComponentType();
